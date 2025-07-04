@@ -74,7 +74,12 @@ Open `index.html` in your web browser.
 
 ## 📸 Screenshots
 
-*(Add relevant screenshots of your project here)*
+![Login Page](/screenshots/1.png)
+_Login Page interface._
+![Register Page](/screenshots/2.png)
+_Register Page interface._
+![Bookmarks Page](/screenshots/3.png)
+_Bookmarks management page._
 
 ## 🔗 Links
 
@@ -84,4 +89,3 @@ Open `index.html` in your web browser.
 ## 📝 Author
 
 - **Ahmed Gaafer** – Frontend Developer
-
