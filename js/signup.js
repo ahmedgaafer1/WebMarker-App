@@ -1,196 +1,167 @@
+const username = document.getElementById("username");
+const emailname = document.getElementById("emailname");
+const password = document.getElementById("password");
+const signupbtn = document.getElementById("signupbtn");
+const alertexist = document.getElementById("alertexist");
+const alertBox = document.getElementById("alert");
+const closeBtn = document.getElementById("closeBtn");
+const loginBtn = document.getElementById("login");
+const signupForm = document.getElementById("signupForm");
 
-document.getElementById("login").addEventListener('click',function(){
-    window.location = "./index.html"
-} );
-var username = document.getElementById('username');
-var emailname = document.getElementById('emailname');
-var password = document.getElementById('password');
-var signupbtn = document.getElementById('signupbtn');
-var alertexist = document.getElementById('alertexist');
-
-var alert = document.getElementById('alert');
-var closeBtn = document.getElementById('closeBtn');
-var accounts = [];
-
-if (localStorage.getItem('accounts') != null) {
-    accounts = JSON.parse(localStorage.getItem('accounts'));
-};
-
-function createaccount() {
-    var emailterm = emailname.value;
-    var usernameterm = username.value;
-    var account = {
-      name: username.value,
-      email: emailname.value,
-      password: password.value,
-    };
-  
-    if (
-      validationname() == true &&
-      validationpassword() == true &&
-      validationemail() == true
-    ) {
-      for (var i = 0; i < accounts.length; i++) {
-        if (
-          accounts[i].email.includes(emailterm) ||
-          accounts[i].name.includes(usernameterm)
-        ) {
-          alertexist.classList.remove("d-none");
-          return;
-        }
-      }
-      accounts.push(account);
-      alertexist.classList.add("d-none");
-      swal("Good job!", "Welcome to our family", "success");
-      localStorage.setItem("accounts", JSON.stringify(accounts));
-      emailname.classList.remove("is-valid");
-      username.classList.remove("is-valid");
-      password.classList.remove("is-valid");
-      cleardata();
-    } 
-    else if (
-      validationname() != true ||
-      validationpassword() != true ||
-      validationemail() != true
-    ) {
-      alert.classList.remove("d-none");
-      alertexist.classList.add("d-none");
-    }
+let accounts = [];
+function loadAccounts() {
+  try {
+    accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  } catch (e) {
+    accounts = [];
   }
-// function createaccount() {
-//     var emailterm = emailname.value;
-//     var usernameterm = username.value;
-//     var account = {
-//         name: username.value ,
-//         email: emailname.value ,
-//         password: password.value
-        
-//     };
-    
-//     if (validationname() == true  && validationpassword() == true && validationemail() == true ) {
-//         for (var i=0; i<accounts.length ; i++ ) {
-//             if ( accounts[i].email.includes(emailterm) || accounts[i].name.includes(usernameterm ) ) {
-//                 alertexist.classList.remove('d-none')
-//                 return;
-//             };
-//          } ;
-//             else {
-//                 accounts.push(account);
-//                 alertexist.classList.add('d-none')
-//                 swal("Good job!", "Welcome to our family", "success");
-//                 emailname.classList.remove('is-valid');
-//                 username.classList.remove("is-valid");
-//                 password.classList.remove("is-valid");
-//                 cleardata();
-//                 localStorage.setItem('accounts', JSON.stringify(accounts));
-//                 return;
-//             };
-            
-       
-        
-//     }
-        
-//      else if(validationname() != true || validationpassword() != true || validationemail() != true  ) {
-//             alert.classList.remove("d-none");
-//             alertexist.classList.add('d-none') ;  
-//     };
-// };
+}
+loadAccounts();
 
-signupbtn.addEventListener('click' , function() {
-    createaccount();
-  
+function hideAlerts() {
+  alertexist.classList.add("d-none");
+  alertBox.classList.add("d-none");
+}
+
+function clearForm() {
+  username.value = "";
+  emailname.value = "";
+  password.value = "";
+  username.classList.remove("is-valid", "is-invalid");
+  emailname.classList.remove("is-valid", "is-invalid");
+  password.classList.remove("is-valid", "is-invalid");
+}
+
+function validateUsername() {
+  const value = username.value.trim();
+  const regex = /^[A-Za-z0-9_]{3,15}$/;
+  if (value === "") {
+    username.classList.remove("is-valid", "is-invalid");
+    return false;
+  }
+  if (regex.test(value)) {
+    username.classList.add("is-valid");
+    username.classList.remove("is-invalid");
+    return true;
+  } else {
+    username.classList.add("is-invalid");
+    username.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function validateEmail() {
+  const value = emailname.value.trim();
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (value === "") {
+    emailname.classList.remove("is-valid", "is-invalid");
+    return false;
+  }
+  if (regex.test(value)) {
+    emailname.classList.add("is-valid");
+    emailname.classList.remove("is-invalid");
+    return true;
+  } else {
+    emailname.classList.add("is-invalid");
+    emailname.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function validatePassword() {
+  const value = password.value;
+  const regex = /^[A-Z][A-Za-z0-9]{7,15}$/;
+  if (value === "") {
+    password.classList.remove("is-valid", "is-invalid");
+    return false;
+  }
+  if (regex.test(value)) {
+    password.classList.add("is-valid");
+    password.classList.remove("is-invalid");
+    return true;
+  } else {
+    password.classList.add("is-invalid");
+    password.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function checkAccountExists(email) {
+  loadAccounts();
+  return accounts.some(
+    (acc) => acc.email.toLowerCase() === email.toLowerCase()
+  );
+}
+
+username.addEventListener("input", function () {
+  validateUsername();
+  hideAlerts();
 });
-// user name validation
-username.addEventListener('input', function() {
-    validationname(); 
+emailname.addEventListener("input", function () {
+  validateEmail();
+  hideAlerts();
 });
-function validationname() {
-    var text = username.value ;
-    var regexname = /^[a-z]{3,15}$/g ;
-    if (regexname.test(text)){
-
-        username.classList.add('is-valid');
-        username.classList.remove("is-invalid");
-        return true ;
-    }
-    else if (text=="") {
-        username.classList.remove("is-valid")
-        username.classList.remove("is-invalid")
-    // alert.classList.add("d-none");
-    return false ;
-
-    }
-    else {
-        username.classList.remove("is-valid")
-        username.classList.add("is-invalid")
-        return false ;
-    }
-};
-
-// end validation
-// passwordvalidation
-password.addEventListener('input', function() {
-    validationpassword(); 
+password.addEventListener("input", function () {
+  validatePassword();
+  hideAlerts();
 });
-    function validationpassword() {
-        var pass = password.value ;
-        var regexpass = /^[A-Z]{1}[0-9]{8,15}$/g ;
-        if (regexpass.test(pass)){
-    
-            password.classList.add('is-valid');
-            password.classList.remove("is-invalid");
-            return true ;
-        }
-        else if (pass=="") {
-            password.classList.remove("is-valid")
-            password.classList.remove("is-invalid")
-        
-        return false ;
-    
-        }
-        else {
-            password.classList.add("is-invalid")
-            password.classList.remove("is-valid")
-            return false ;
-        }
-    };
-    // end pass valid
-    // email validation
+[username, emailname, password].forEach((input) => {
+  input.addEventListener("focus", hideAlerts);
+});
+closeBtn.addEventListener("click", hideAlerts);
 
+loginBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  window.location.href = "./index.html";
+});
 
-    
-    emailname.addEventListener('input', function() {
-        validationemail(); 
-    });
-        function validationemail() {
-            var mail = emailname.value ;
-            var regexmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g ;
-            if (regexmail.test(mail)){
-        
-                emailname.classList.add('is-valid');
-                emailname.classList.remove("is-invalid");
-                return true ;
-            }
-            else if (mail=="") {
-                emailname.classList.remove("is-valid")
-                emailname.classList.remove("is-invalid")
-            
-            return false ;
-        
-            }
-            else {
-                emailname.classList.add("is-invalid")
-                emailname.classList.remove("is-valid")
-                return false ;
-            }
-        };
+signupForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  hideAlerts();
 
-        // alert closebtn 
-        closeBtn.addEventListener('click', function() {
-            alert.classList.add("d-none")
-        });
-function cleardata() {
-    emailname.value ="";
-     username.value ="";
-     password.value="";
-};
+  const nameVal = username.value.trim();
+  const emailVal = emailname.value.trim();
+  const passVal = password.value;
+
+  if (!nameVal || !emailVal || !passVal) {
+    alertBox.classList.remove("d-none");
+    return;
+  }
+
+  const validName = validateUsername();
+  const validEmail = validateEmail();
+  const validPass = validatePassword();
+  if (!validName || !validEmail || !validPass) {
+    alertBox.classList.remove("d-none");
+    return;
+  }
+
+  if (checkAccountExists(emailVal)) {
+    alertexist.classList.remove("d-none");
+    return;
+  }
+
+  const newAccount = {
+    name: nameVal,
+    email: emailVal,
+    password: passVal,
+    createdAt: new Date().toISOString(),
+  };
+  accounts.push(newAccount);
+  localStorage.setItem("accounts", JSON.stringify(accounts));
+
+  Swal.fire({
+    icon: "success",
+    title: " Account created successfully  !",
+    text: "  you will be redirected to the login page",
+    confirmButtonText: "Ok",
+  }).then(() => {
+    clearForm();
+    window.location.href = "./index.html";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  hideAlerts();
+  username.focus();
+});

@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./add-friend_1208737.ico" type="image/x-icon">
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/all.min.css">
-    
-    <link rel="stylesheet" href="./css/signup.css">
-    <title>SignUp</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./add-friend_1208737.ico" type="image/x-icon" />
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/all.min.css" />
+  <link rel="stylesheet" href="./css/signup.css" />
+  <title>SignUp</title>
 </head>
 <body>
 <main>
-<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="item">
+          <form class="form" id="signupForm" novalidate>
+            <h2 class="text-center"> Sign Up</h2>
+            <div class="p-1">
+              <input type="text" id="username" class="form-control" placeholder="Enter your Name" />
+            </div>
+            <div class="p-1">
+              <input type="email" id="emailname" class="form-control" placeholder="Enter your Email" />
+            </div>
+            <div class="p-1">
+              <input type="password" id="password" class="form-control" placeholder="Enter your password" />
+            </div>
+            <p class="bg-light rounded-2 p-1 mt-1 ms-2 me-2 mx-auto text-center text-danger d-none" id="alertexist">Email already exists</p>
+            <div class="w-25 mx-auto">
+             <button type="submit" class="btn btn1 mt-3 ms-2" id="signupbtn">
+  SignUp <i class="fa-solid fa-user-plus"></i>
+</button>
+            </div>
+            <p>
+              You have an account?
+              <a href="#" id="login">LogIn <i class="fa-solid fa-right-to-bracket"></i></a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-sm-12">
       <div class="item">
-        <div class="form" >
-            <h2 class="text-center "> Sign Up</h2>
-            <div  class="p-1">
-            
-                <input type="text" id="username" class="form-control "  placeholder="Enter your Name">
-              </div>
-          <div  class="p-1">
-            
-            <input type="email" id="emailname" class="form-control"  placeholder="Enter your Email">
+        <div class="mistake d-none" id="alert">
+          <div class="inner w-50 mx-auto">
+            <div class="button">
+              <button class="btn border-0" id="closeBtn">
+                <i class="fa-solid fa-xmark close fs-3"></i>
+              </button>
+            </div>
+            <p class="m-0 pb-2 pt-5">
+              UserName or password or Email is not valid, Please follow the rules below :
+            </p>
+            <ol class="rules list-unstyled m-0">
+              <li>
+                <i class="fa-regular fa-circle-right p-2"></i>Site name must
+                User must 3 characters at least .
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-right p-2"></i> Mail must have ( @ ), (.com)
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-right p-2"></i>The password must start with capital letter and must not be more than 16 characters and not less than 9.
+              </li>
+            </ol>
           </div>
-          <div class="p-1" >
-           
-            <input type="password" id="password" class="form-control" placeholder="Enter your password">
-          </div>
-          <p class="bg-light  rounded-2 p-1 mt-1 ms-2 me-2 mx-auto text-center text-danger d-none" id="alertexist">Email already exists</p>
-          <div class=" w-25 mx-auto ">
-           <button class="btn btn1 mt-3 ms-2" id="signupbtn"> SignUp <i class="fa-solid fa-user-plus"></i></button>
-          </div>
-          <p >You have an account? <a href="#" id="login">LogIn <i class="fa-solid fa-right-to-bracket"></i></a></p>
         </div>
       </div>
-      
     </div>
   </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="item">
-            <div class="mistake  d-none" id="alert">
-                <div class="inner w-50 mx-auto">
-                  
-                    <div class="button ">
-                       
-                        <button class="btn border-0 " id="closeBtn">
-                            <i class="fa-solid fa-xmark close fs-3"></i>
-                          </button>
-                    </div>
-                    <p class="m-0 pb-2 pt-5">
-                        UserName or password or Email is not valid, Please follow the rules below :
-                      </p>
-                      <ol class="rules list-unstyled m-0">
-                        <li>
-                          <i class="fa-regular fa-circle-right p-2"></i>Site name must
-                          User must 3 characters at least .
-                        </li>
-                        <li>
-                          <i class="fa-regular fa-circle-right p-2"></i> Mail must have ( @ ), (.com)
-                        </li>
-                        <li>
-                          <i class="fa-regular fa-circle-right p-2"></i>The password must start with capital letter and must not be more than 16 characters and not less than 9.
-                      </ol>
-                </div>
-              </div>
-        </div>
-    </div>
-</div>
 </main>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/signup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/signup.js"></script>
 </body>
 </html>
-
-
-
-
-
-
