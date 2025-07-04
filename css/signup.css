@@ -1,0 +1,142 @@
+* {
+    list-style: none;
+    text-decoration: none !important;
+}
+main {
+    background-image:linear-gradient(rgba(0, 0, 0, 0.197) 0% 100%) ,url(../photos/StockSnap_ECICLHJMAZ.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+	position: relative;
+}
+
+.item {
+    width: 53%;
+    margin: auto;
+
+}
+.item .form {
+    background-color: #2f211c6a;
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+    border-radius: 1rem;
+margin-top: 8rem;
+padding: 1.5rem;
+color: white;
+    
+}
+.item .form label {
+    font-size: 18px;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+}
+.item .form  a {
+    color: white;
+}
+.item .form  p {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+.btn1 {
+   border: 1px solid white;
+   color: white;
+    transition: all 0.5s;
+    padding-inline: 1.5rem;
+    animation: animationbutton 1s ease 0s infinite alternate forwards;
+   margin-bottom: 10px;
+}
+
+@keyframes animationbutton {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 1;
+		transform: translateX(-48px);
+	}
+
+	24% {
+		opacity: 1;
+	}
+
+	40% {
+		animation-timing-function: ease-in;
+		transform: translateX(-26px);
+	}
+
+	65% {
+		animation-timing-function: ease-in;
+		transform: translateX(-13px);
+	}
+
+	82% {
+		animation-timing-function: ease-in;
+		transform: translateX(-6.5px);
+	}
+
+	93% {
+		animation-timing-function: ease-in;
+		transform: translateX(-4px);
+	}
+
+	25%,
+	55%,
+	75%,
+	87%,
+	98% {
+		animation-timing-function: ease-out;
+		transform: translateX(0px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+.btn1:hover {
+    border: 1px solid white;
+   color: white;
+
+}
+input {
+    color: black !important;
+}
+.form-control:focus {
+    border-color: #2F2421;
+     box-shadow: 0 0 0 0.25rem rgb(47 36 33 / 29%);
+}
+h2 {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+.mistake {
+   background-color: rgba(0, 0, 0, 0.152);
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+
+}
+.mistake .inner {
+	background-color: white;
+	position: relative;
+	top: 30%;
+	left: 0%;
+	padding: 2rem;
+	border-radius: 1rem;
+	z-index: 10;
+
+
+}
+.button {
+width: 5%;
+margin-left: auto;
+}
+.mistake .inner::before {
+	position: absolute; 
+	left: 50%;
+	top: 10%;
+	content: '\f235';
+	font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+
+}

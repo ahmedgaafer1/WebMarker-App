@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./bookmark.ico" type="image/x-icon">
+    <title>Bookmark</title>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="./css/home.css">
+    <title>bookmarker</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg  fixed-top ">
+        <div class="container-fluid  ">
+          <a class="navbar-brand ps-5 m-sm-1 " href="#">Bookmarker</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-gear fa-spin"></i>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto pe-3 mb-0 mb-lg-0 position-relative">
+            
+              <li class="nav-item pe-2">
+              
+                <a id="name" class="nav-link" id="exitbtn"></a>
+              </li>
+              <li class="nav-item pe-2">
+                <a class="nav-link" id="exitbtn" href="#">Exit <i class="fa-solid fa-person-running"></i></a>
+              </li>
+            
+             
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    <main class="mt-5">
+        <div class="container">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="head">
+    <h1>AG Bookmarker</h1>
+        </div>
+        <div class="form">
+            <div class="headtittle"><h2><i class="fa-solid fa-bookmark icon1"></i> Bookmark your favorite sites  <i class="fa-solid fa-bookmark"></i></h2>
+            </div>
+            
+            <div>
+                    <label for="sitename" class="mb-2"> <i class="fa-solid fa-book-bookmark pe-2"></i>Site Name</label>
+                    <input type="text" class="form-control mb-4 invalid " id="sitename" placeholder="Bookmark Name" oninput="validationname();">
+                    <div class="alert d-none " id="alert"><p>you should write a site name contain characters between [a-z] from 3 letters to 15 .</p></div>
+                </div>
+              <div>
+                <label for="siteurl" class="mb-2"><i class="fa-solid fa-link pe-2"></i>Site URL</label>
+                <input type="text" class="form-control mb-4  " id="siteurl" placeholder="Website URL" oninput="validationsite();">
+                <div class=" alert d-none " id="alert1"><p> Url must start with https://  www . thesite url and end with .com</p></div>
+              </div>
+              <div class="bot"> <button class="btn btn-submit px-5   m-auto" onclick="adddata();" id="submitbutton">Submit</button></div>
+              <div class="bot"> <button class="btn btn-submit px-5 d-none  m-auto" onclick="updatedata();"id="updatebutton" >Update</button></div>
+        </div>
+        <table class="table text-center bg-light mt-3">
+            <input type="search" id="searchinput" class="form-control w-75 mx-auto mt-3" placeholder="search here..." oninput="displaydata();">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Website Name</th>
+                    <th>Visit</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                   
+                </tr>
+                <tbody id="tablebody">
+                   
+                </tbody>
+            </thead>
+           </table>
+
+    </div>
+</div>
+        </div>
+    </main>
+  
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+</html>
